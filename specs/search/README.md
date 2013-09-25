@@ -57,10 +57,6 @@ Returns a mixed collection of relevant resources (courses, instructors, departme
             <td>No</td>
         </tr>
         <tr>
-            <td>Request per rate limit window</td>
-            <td></td>
-        </tr>
-        <tr>
             <td>Authentication</td>
             <td>None</td>
         </tr>
@@ -86,14 +82,14 @@ Returns a mixed collection of relevant resources (courses, instructors, departme
     </thead>
     <tbody>
         <tr>
-            <td>q</td>
-            <td><tt>Required</tt></td>
+            <td><tt>q</tt></td>
+            <td><strong>Required</strong></td>
             <td>A search query.</td>
             <td><tt>econ</tt>, <tt>spiegel</tt></td>
         </tr>
         <tr>
-            <td>result_type</td>
-            <td>mixed</td>
+            <td><tt>result_type</tt></td>
+            <td><tt>mixed</tt></td>
             <td>
                 <p>The type of results to fetch. Valid values include:</p>
                 <br>
@@ -108,15 +104,15 @@ Returns a mixed collection of relevant resources (courses, instructors, departme
             <td><tt>departments</tt>, <tt>mixed</tt></td>
         </tr>
         <tr>
-            <td>count</td>
-            <td>15</td>
+            <td><tt>count</tt></td>
+            <td><tt>15</tt></td>
             <td>The number of results to return per page.</td>
             <td><tt>11</tt>, <tt>7</tt></td>
         </tr>
         <tr>
-            <td>page</td>
-            <td>0</td>
-            <td>The page to fetch results.</td>
+            <td><tt>page</tt></td>
+            <td><tt>0</tt></td>
+            <td>The page to fetch.</td>
             <td><tt>2</tt>, <tt>5</tt></td>
         </tr>
     </tbody>
@@ -130,7 +126,7 @@ GET: `http://api.penncoursereview.com/1.1/search?q=econ&result_type=mixed&count=
 
 A response returns multiple datasets.
 
-Responses are compatible with [typeahead.js][1].
+Note: Responses are compatible with [typeahead.js][1].
 
 ### Example
 
@@ -221,11 +217,11 @@ Responses are compatible with [typeahead.js][1].
 
 A datum is an individual unit of a dataset.
 
-The canonical form of a datum is an object with a `value` property, `tokens` property, and `path` property.
+The canonical form of a datum has three parts:
 
-- `value` is a string that represents the underlying value of the datum.
-- `token` is an array of single-word strings that aids in matching a datum with a given query.
-- `path` is a string that represents the path to the full object.
+- `value`: a string that represents the underlying value of the datum.
+- `token`: an array of single-word strings that aids in matching a datum with a given query.
+- `path`: a string that represents the path to the full object.
 
 <table>
     <thead>
