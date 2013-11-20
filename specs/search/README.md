@@ -134,7 +134,13 @@ Note: Responses are compatible with [typeahead.js][1].
 {
     "courses": [
         {
-            "value": "ECON 001",
+            "aliases": [
+                "ECON-001"
+            ],
+            "description": "Discussion of special research topics",
+            "name": "INTRO TO MICRO",
+            "path": "/courses/ECON-001",
+            "semester": "2012C",
             "tokens": [
               "econ001",
               "econ-001",
@@ -144,11 +150,15 @@ Note: Responses are compatible with [typeahead.js][1].
               "to",
               "micro"
             ],
-            "path": "/courses/ECON-001",
-            "name": "INTRO TO MICRO",
-            "description": "Discussion of special research topics"
+            "value": "ECON 001"
         }, {
-            "value": "CIS 120",
+            "aliases": [
+                "CIS-120"
+            ],
+            "description": "Introduction to the fundamental concepts of programming.",
+            "name": "PROG LANG & TECH I",
+            "path": "/courses/CIS-120",
+            "semester": "2012C",
             "tokens": [
               "cis120",
               "cis-120",
@@ -160,45 +170,39 @@ Note: Responses are compatible with [typeahead.js][1].
               "tech",
               "i"
             ],
-            "path": "/courses/CIS-120",
-            "name": "PROG LANG & TECH I",
-            "description": "Introduction to the fundamental concepts of programming."
+            "value": "CIS 120"
         }
     ],
     "instructors": [
         {
-            "value": "Uriel Spiegel",
+            "path": "/instructors/1360-URIEL-SPIEGEL",
             "tokens": [
                 "uriel",
                 "spiegel",
-                "econ"
             ],
-            "path": "/instructors/1360-URIEL-SPIEGEL",
-            "departments": ["ECON"]
+            "value": "Uriel Spiegel"
         }, {
-            "value": "Carita C. Huang",
+            "path": "/instructors/2182-CARITA-C--HUANG",
             "tokens": [
                 "carita",
                 "c.",
                 "huang",
-                "hssc",
-                "hsoc"
             ],
-            "path": "/instructors/2182-CARITA-C--HUANG",
-            "departments": ["HSSC", "HSOC"]
+            "value": "Carita C. Huang"
         }
     ],
     "departments": [
         {
-            "value": "Economics",
+            "id": "ECON",
+            "path": "/depts/ECON",
             "tokens": [
                 "econ",
                 "economics"
             ],
-            "path": "/depts/ECON",
-            "id": "ECON"
+            "value": "Economics"
         }, {
-            "value": "Computer and Information Science",
+            "id": "CIS",
+            "path": "/depts/CIS",
             "tokens": [
                 "cis",
                 "computer",
@@ -206,8 +210,7 @@ Note: Responses are compatible with [typeahead.js][1].
                 "information",
                 "science"
             ],
-            "path": "/depts/CIS",
-            "id": "CIS"
+            "value": "Computer and Information Science"
         }
     ]
 }
@@ -236,7 +239,13 @@ The canonical form of a datum has three parts:
             <td>
 <pre>
 {
-    "value": "ECON 001",
+    "aliases": [
+        "ECON-001"
+    ],
+    "description": "Discussion of special research topics",
+    "name": "INTRO TO MICRO",
+    "path": "/courses/ECON-001",
+    "semester": "2012C",
     "tokens": [
       "econ001",
       "econ-001",
@@ -246,9 +255,7 @@ The canonical form of a datum has three parts:
       "to",
       "micro"
     ],
-    "path": "/courses/ECON-001",
-    "name": "INTRO TO MICRO",
-    "description": "Discussion of special research topics"
+    "value": "ECON 001"
 }
 </pre>
             </td>
@@ -263,10 +270,7 @@ The canonical form of a datum has three parts:
         "uriel",
         "spiegel"
     ],
-    "path": "/instructors/1360-URIEL-SPIEGEL",
-    "departments": [
-        "ECON"
-    ]
+    "path": "/instructors/1360-URIEL-SPIEGEL"
 }
 </pre>
             </td>
