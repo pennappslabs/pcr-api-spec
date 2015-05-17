@@ -1,0 +1,9 @@
+{
+ "description": "Penn Course Review API",
+ "id": "pcr-api",
+ "links": [{
+   "href": "http://api.penncoursereview.com",
+   "rel": "self"
+ }],
+ "title": "Penn Course Review"
+}
