@@ -83,11 +83,115 @@
           "$ref": "#/definitions/department/definitions/path"
         }
       }
+    },
+    "instructor": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Instructors",
+      "description": "Instructors at Penn",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier for instructor",
+          "example": "1-JACK-TOPIOL",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "first_name": {
+          "description": "first name of instructor",
+          "example": "JACK",
+          "type": [
+            "string"
+          ]
+        },
+        "last_name": {
+          "description": "last name of instructor",
+          "example": "TOPIOL",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "full name of instructor",
+          "example": "JACK TOPIOL",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/instructor/definitions/id"
+            }
+          ]
+        },
+        "path": {
+          "description": "relative path for instructor on the PCR API",
+          "example": "/instructors/1-JACK-TOPIOL",
+          "type": [
+            "string"
+          ]
+        },
+        "depts": {
+          "description": "list of associated departments",
+          "type": [
+            "array"
+          ],
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/department/definitions/id"
+          }
+        }
+      },
+      "links": [
+        {
+          "description": "Info for existing instructor.",
+          "href": "/instructors/{(%23%2Fdefinitions%2Finstructor%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing instructors.",
+          "href": "/instructors",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/instructor/definitions/id"
+        },
+        "first_name": {
+          "$ref": "#/definitions/instructor/definitions/first_name"
+        },
+        "last_name": {
+          "$ref": "#/definitions/instructor/definitions/last_name"
+        },
+        "name": {
+          "$ref": "#/definitions/instructor/definitions/name"
+        },
+        "path": {
+          "$ref": "#/definitions/instructor/definitions/path"
+        },
+        "depts": {
+          "$ref": "#/definitions/instructor/definitions/depts"
+        }
+      }
     }
   },
   "properties": {
     "department": {
       "$ref": "#/definitions/department"
+    },
+    "instructor": {
+      "$ref": "#/definitions/instructor"
     }
   },
   "description": "Penn Course Review API",

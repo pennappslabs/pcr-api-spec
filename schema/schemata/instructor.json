@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Instructors",
+  "description": "Instructors at Penn",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier for instructor",
+      "example": "1-JACK-TOPIOL",
+      "readOnly": true,
+      "type": "string"
+    },
+    "first_name": {
+      "description": "first name of instructor",
+      "example": "JACK",
+      "type": "string"
+    },
+    "last_name": {
+      "description": "last name of instructor",
+      "example": "TOPIOL",
+      "type": "string"
+    },
+    "name": {
+      "description": "full name of instructor",
+      "example": "JACK TOPIOL",
+      "type": "string"
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/instructor#/definitions/id"
+        }
+      ]
+    },
+    "path": {
+      "description": "relative path for instructor on the PCR API",
+      "example": "/instructors/1-JACK-TOPIOL",
+      "type": "string"
+    },
+    "depts": {
+      "description": "list of associated departments",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "/schemata/department#/definitions/id"
+      }
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing instructor.",
+      "href": "/instructors/{(%2Fschemata%2Finstructor%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "List existing instructors.",
+      "href": "/instructors",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/instructor#/definitions/id"
+    },
+    "first_name": {
+      "$ref": "/schemata/instructor#/definitions/first_name"
+    },
+    "last_name": {
+      "$ref": "/schemata/instructor#/definitions/last_name"
+    },
+    "name": {
+      "$ref": "/schemata/instructor#/definitions/name"
+    },
+    "path": {
+      "$ref": "/schemata/instructor#/definitions/path"
+    },
+    "depts": {
+      "$ref": "/schemata/instructor#/definitions/depts"
+    }
+  },
+  "id": "schemata/instructor"
+}
