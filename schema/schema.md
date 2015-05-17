@@ -140,3 +140,84 @@ HTTP/1.1 200 OK
 ```
 
 
+## Semesters
+
+Academic semester. Spring is A, Summer is B, Fall is C.
+
+### Attributes
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **id** | *string* | unique identifier for semester | `"2002A"` |
+| **name** | *string* | unique name of semester | `"Spring 2002"` |
+| **path** | *string* | relative path for semester on the PCR API | `"/semesters/2002a"` |
+| **seasoncode** | *string* | code for semester which maps to Spring, Summer, Fall<br/> **one of:**`"A"` or `"B"` or `"C"` | `"C"` |
+| **year** | *integer* | year of semester<br/> **Range:** `2000 <= value <= 2100` | `2002` |
+
+### Semesters Info
+
+Info for existing semester.
+
+```
+GET /semesters/{semester_id}
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n http://api.penncoursereview.com/semesters/$SEMESTER_ID
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "2002A",
+  "name": "Spring 2002",
+  "path": "/semesters/2002a",
+  "seasoncode": "C",
+  "year": 2002
+}
+```
+
+### Semesters List
+
+List existing semesters.
+
+```
+GET /semesters
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n http://api.penncoursereview.com/semesters
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+[
+  {
+    "id": "2002A",
+    "name": "Spring 2002",
+    "path": "/semesters/2002a",
+    "seasoncode": "C",
+    "year": 2002
+  }
+]
+```
+
+

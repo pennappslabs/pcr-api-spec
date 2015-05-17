@@ -184,6 +184,100 @@
           "$ref": "#/definitions/instructor/definitions/depts"
         }
       }
+    },
+    "semester": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Semesters",
+      "description": "Academic semester. Spring is A, Summer is B, Fall is C.",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier for semester",
+          "example": "2002A",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of semester",
+          "example": "Spring 2002",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/semester/definitions/id"
+            }
+          ]
+        },
+        "path": {
+          "description": "relative path for semester on the PCR API",
+          "example": "/semesters/2002a",
+          "type": [
+            "string"
+          ]
+        },
+        "seasoncode": {
+          "description": "code for semester which maps to Spring, Summer, Fall",
+          "example": "C",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        "year": {
+          "description": "year of semester",
+          "example": 2002,
+          "type": [
+            "integer"
+          ],
+          "minimum": 2000,
+          "maximum": 2100
+        }
+      },
+      "links": [
+        {
+          "description": "Info for existing semester.",
+          "href": "/semesters/{(%23%2Fdefinitions%2Fsemester%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing semesters.",
+          "href": "/semesters",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/semester/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/semester/definitions/name"
+        },
+        "path": {
+          "$ref": "#/definitions/semester/definitions/path"
+        },
+        "seasoncode": {
+          "$ref": "#/definitions/semester/definitions/seasoncode"
+        },
+        "year": {
+          "$ref": "#/definitions/semester/definitions/year"
+        }
+      }
     }
   },
   "properties": {
@@ -192,6 +286,9 @@
     },
     "instructor": {
       "$ref": "#/definitions/instructor"
+    },
+    "semester": {
+      "$ref": "#/definitions/semester"
     }
   },
   "description": "Penn Course Review API",
