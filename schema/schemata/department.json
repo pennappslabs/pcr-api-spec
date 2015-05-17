@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Departments",
+  "description": "Academic department at Penn",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique 3-4 letter code for department",
+      "example": "CIS",
+      "type": "string"
+    },
+    "name": {
+      "description": "full name of department",
+      "example": "COMPUTER AND INFORMATION SCI",
+      "type": "string"
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/department#/definitions/id"
+        }
+      ]
+    },
+    "path": {
+      "description": "relative path for department on the PCR API",
+      "example": "/depts/cis",
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "description": "List departments.",
+      "href": "/depts",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "properties": {
+              "values": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "/schemata/department#"
+                }
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/department#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/department#/definitions/name"
+    },
+    "path": {
+      "$ref": "/schemata/department#/definitions/path"
+    }
+  },
+  "id": "schemata/department"
+}
