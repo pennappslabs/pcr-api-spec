@@ -161,7 +161,27 @@
           "href": "/instructors",
           "method": "GET",
           "rel": "instances",
-          "title": "List"
+          "title": "List",
+          "targetSchema": {
+            "properties": {
+              "result": {
+                "properties": {
+                  "values": {
+                    "type": [
+                      "array"
+                    ],
+                    "uniqueItems": true,
+                    "items": {
+                      "$ref": "#/definitions/instructor"
+                    }
+                  }
+                },
+                "type": [
+                  "object"
+                ]
+              }
+            }
+          }
         }
       ],
       "properties": {
@@ -258,7 +278,27 @@
           "href": "/semesters",
           "method": "GET",
           "rel": "instances",
-          "title": "List"
+          "title": "List",
+          "targetSchema": {
+            "properties": {
+              "result": {
+                "properties": {
+                  "values": {
+                    "type": [
+                      "array"
+                    ],
+                    "uniqueItems": true,
+                    "items": {
+                      "$ref": "#/definitions/semester"
+                    }
+                  }
+                },
+                "type": [
+                  "object"
+                ]
+              }
+            }
+          }
         }
       ],
       "properties": {

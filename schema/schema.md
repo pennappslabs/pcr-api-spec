@@ -125,18 +125,22 @@ HTTP/1.1 200 OK
 ```
 
 ```json
-[
-  {
-    "id": "1-JACK-TOPIOL",
-    "first_name": "JACK",
-    "last_name": "TOPIOL",
-    "name": "JACK TOPIOL",
-    "path": "/instructors/1-JACK-TOPIOL",
-    "depts": [
-      "CIS"
+{
+  "result": {
+    "values": [
+      {
+        "id": "1-JACK-TOPIOL",
+        "first_name": "JACK",
+        "last_name": "TOPIOL",
+        "name": "JACK TOPIOL",
+        "path": "/instructors/1-JACK-TOPIOL",
+        "depts": [
+          "CIS"
+        ]
+      }
     ]
   }
-]
+}
 ```
 
 
@@ -209,15 +213,19 @@ HTTP/1.1 200 OK
 ```
 
 ```json
-[
-  {
-    "id": "2002A",
-    "name": "Spring 2002",
-    "path": "/semesters/2002a",
-    "seasoncode": "C",
-    "year": 2002
+{
+  "result": {
+    "values": [
+      {
+        "id": "2002A",
+        "name": "Spring 2002",
+        "path": "/semesters/2002a",
+        "seasoncode": "C",
+        "year": 2002
+      }
+    ]
   }
-]
+}
 ```
 
 

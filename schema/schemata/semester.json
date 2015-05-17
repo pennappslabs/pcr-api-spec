@@ -57,7 +57,23 @@
       "href": "/semesters",
       "method": "GET",
       "rel": "instances",
-      "title": "List"
+      "title": "List",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "properties": {
+              "values": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "/schemata/semester#"
+                }
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
     }
   ],
   "properties": {

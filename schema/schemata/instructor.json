@@ -63,7 +63,23 @@
       "href": "/instructors",
       "method": "GET",
       "rel": "instances",
-      "title": "List"
+      "title": "List",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "properties": {
+              "values": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "/schemata/instructor#"
+                }
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
     }
   ],
   "properties": {
