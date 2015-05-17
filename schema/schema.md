@@ -27,7 +27,7 @@ GET /depts
 #### Curl Example
 
 ```bash
-$ curl -n http://api.penncoursereview.com/depts
+$ curl -n http://api.penncoursereview.com/v1/depts
 ```
 
 
@@ -79,7 +79,7 @@ GET /instructors/{instructor_id}
 #### Curl Example
 
 ```bash
-$ curl -n http://api.penncoursereview.com/instructors/$INSTRUCTOR_ID
+$ curl -n http://api.penncoursereview.com/v1/instructors/$INSTRUCTOR_ID
 ```
 
 
@@ -114,7 +114,7 @@ GET /instructors
 #### Curl Example
 
 ```bash
-$ curl -n http://api.penncoursereview.com/instructors
+$ curl -n http://api.penncoursereview.com/v1/instructors
 ```
 
 
@@ -170,7 +170,7 @@ GET /semesters/{semester_id}
 #### Curl Example
 
 ```bash
-$ curl -n http://api.penncoursereview.com/semesters/$SEMESTER_ID
+$ curl -n http://api.penncoursereview.com/v1/semesters/$SEMESTER_ID
 ```
 
 
@@ -202,7 +202,7 @@ GET /semesters
 #### Curl Example
 
 ```bash
-$ curl -n http://api.penncoursereview.com/semesters
+$ curl -n http://api.penncoursereview.com/v1/semesters
 ```
 
 

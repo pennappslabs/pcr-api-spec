@@ -2,7 +2,7 @@
  "description": "Penn Course Review API",
  "id": "pcr-api",
  "links": [{
-   "href": "http://api.penncoursereview.com",
+   "href": "http://api.penncoursereview.com/v1",
    "rel": "self"
  }],
  "title": "Penn Course Review"
