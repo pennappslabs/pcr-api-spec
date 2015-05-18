@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Reviews",
+  "description": "Course reviews with associated comments",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "comments": {
+      "description": "qualitative comments about the course",
+      "type": "string"
+    },
+    "id": {
+      "description": "unique identifier of a review",
+      "example": "13021-001-297-VAL-BREAZU-TANNEN",
+      "type": "string"
+    },
+    "instructor": {
+      "description": "Instructor for reviewed course",
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "$ref": "/schemata/instructor#/definitions/first_name"
+        },
+        "id": {
+          "$ref": "/schemata/instructor#/definitions/id"
+        },
+        "last_name": {
+          "$ref": "/schemata/instructor#/definitions/last_name"
+        },
+        "name": {
+          "$ref": "/schemata/instructor#/definitions/name"
+        },
+        "path": {
+          "$ref": "/schemata/instructor#/definitions/path"
+        }
+      }
+    },
+    "num_reviewers": {
+      "description": "number of students who chose to review this course offering",
+      "example": 23,
+      "type": "integer"
+    },
+    "num_students": {
+      "description": "number of students who took this class and could have reviewed the course",
+      "example": 36,
+      "type": "integer"
+    },
+    "path": {
+      "description": "relative path for review on the PCR API",
+      "example": "/courses/13021/sections/001/reviews/297-VAL-BREAZU-TANNEN",
+      "type": "string"
+    },
+    "ratings": {
+      "description": "quantitative ratings given to course",
+      "type": "object"
+    },
+    "section": {
+      "description": "metadata on specific section of course review",
+      "type": "object"
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/review#/definitions/id"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "List existing reviews.",
+      "href": "/reviews",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "properties": {
+              "values": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "/schemata/review#"
+                }
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "comments": {
+      "$ref": "/schemata/review#/definitions/comments"
+    },
+    "id": {
+      "$ref": "/schemata/review#/definitions/id"
+    },
+    "instructor": {
+      "$ref": "/schemata/review#/definitions/instructor"
+    },
+    "num_reviewers": {
+      "$ref": "/schemata/review#/definitions/num_reviewers"
+    },
+    "num_students": {
+      "$ref": "/schemata/review#/definitions/num_students"
+    },
+    "path": {
+      "$ref": "/schemata/review#/definitions/path"
+    },
+    "ratings": {
+      "$ref": "/schemata/review#/definitions/ratings"
+    },
+    "section": {
+      "$ref": "/schemata/review#/definitions/section"
+    }
+  },
+  "id": "schemata/review"
+}

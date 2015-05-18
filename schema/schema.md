@@ -144,6 +144,75 @@ HTTP/1.1 200 OK
 ```
 
 
+## Reviews
+
+Course reviews with associated comments
+
+### Attributes
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **comments** | *string* | qualitative comments about the course | example |
+| **id** | *string* | unique identifier of a review | `"13021-001-297-VAL-BREAZU-TANNEN"` |
+| **instructor:first_name** | *string* | first name of instructor | `"JACK"` |
+| **instructor:id** | *string* | unique identifier for instructor | `"1-JACK-TOPIOL"` |
+| **instructor:last_name** | *string* | last name of instructor | `"TOPIOL"` |
+| **instructor:name** | *string* | full name of instructor | `"JACK TOPIOL"` |
+| **instructor:path** | *string* | relative path for instructor on the PCR API | `"/instructors/1-JACK-TOPIOL"` |
+| **num_reviewers** | *integer* | number of students who chose to review this course offering | `23` |
+| **num_students** | *integer* | number of students who took this class and could have reviewed the course | `36` |
+| **path** | *string* | relative path for review on the PCR API | `"/courses/13021/sections/001/reviews/297-VAL-BREAZU-TANNEN"` |
+| **ratings** | *object* | quantitative ratings given to course |  |
+| **section** | *object* | metadata on specific section of course review |  |
+
+### Reviews List
+
+List existing reviews.
+
+```
+GET /reviews
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n http://api.penncoursereview.com/v1/reviews
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "result": {
+    "values": [
+      {
+        "comments": "example",
+        "id": "13021-001-297-VAL-BREAZU-TANNEN",
+        "instructor": {
+          "first_name": "JACK",
+          "id": "1-JACK-TOPIOL",
+          "last_name": "TOPIOL",
+          "name": "JACK TOPIOL",
+          "path": "/instructors/1-JACK-TOPIOL"
+        },
+        "num_reviewers": 23,
+        "num_students": 36,
+        "path": "/courses/13021/sections/001/reviews/297-VAL-BREAZU-TANNEN",
+        "ratings": null,
+        "section": null
+      }
+    ]
+  }
+}
+```
+
+
 ## Semesters
 
 Academic semester. Spring is A, Summer is B, Fall is C.
