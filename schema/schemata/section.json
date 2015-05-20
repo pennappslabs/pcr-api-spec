@@ -1,0 +1,275 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Sections",
+  "description": "Course section",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "aliases": {
+      "description": "list of associated aliases for a section",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "description": "a section alias' unique identifier",
+        "example": "MATH-570-401",
+        "type": "string"
+      }
+    },
+    "courses": {
+      "description": "associated course for a section",
+      "type": "object",
+      "properties": {
+        "aliases": {
+          "$ref": "/schemata/course#/definitions/aliases"
+        },
+        "id": {
+          "$ref": "/schemata/course#/definitions/id"
+        },
+        "name": {
+          "$ref": "/schemata/course#/definitions/name"
+        },
+        "path": {
+          "$ref": "/schemata/course#/definitions/path"
+        },
+        "primary_alias": {
+          "$ref": "/schemata/course#/definitions/primary_alias"
+        },
+        "semester": {
+          "$ref": "/schemata/semester#/definitions/id"
+        }
+      }
+    },
+    "group": {
+      "description": "???",
+      "example": 1,
+      "type": "number"
+    },
+    "id": {
+      "description": "unique identifier for section",
+      "example": "2041-401",
+      "type": "string"
+    },
+    "instructors": {
+      "description": "list of associated instructors",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "/schemata/review#/definitions/instructor"
+      }
+    },
+    "meetingtimes": {
+      "description": "list of section meeting times",
+      "type": "array",
+      "items": {
+        "$ref": "/schemata/section#/definitions/meetingtime"
+      }
+    },
+    "meetingtime": {
+      "description": "time, date, and location of a course section",
+      "type": "object",
+      "properties": {
+        "day": {
+          "description": "abbreviated day of the week",
+          "example": "W",
+          "type": "string"
+        },
+        "start": {
+          "description": "start time of course in %H:%M format",
+          "example": "13:30",
+          "type": "string"
+        },
+        "end": {
+          "description": "end time of course in %H:%M format",
+          "example": "15:00",
+          "type": "string"
+        },
+        "type": {
+          "description": "section type",
+          "example": "LEC",
+          "type": "string",
+          "enum": [
+            "LEC",
+            "REC",
+            "LAB",
+            "IND",
+            "SEM",
+            "SRT",
+            "STU",
+            "CLN",
+            "PRC",
+            "PRO"
+          ]
+        },
+        "room": {
+          "description": "section location",
+          "type": "object",
+          "properties": {
+            "id": {
+              "description": "unique identifier for room",
+              "example": "LEVH 101",
+              "type": "string"
+            },
+            "name": {
+              "description": "name of room if available",
+              "example": "Wu and Chen Auditorium",
+              "type": "string"
+            },
+            "number": {
+              "description": "number of room in building (note: not always a number entirely)",
+              "example": "101",
+              "type": "string"
+            },
+            "building": {
+              "description": "building in which section is located",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "unique identifier for building",
+                  "example": "LEVH",
+                  "type": "string"
+                },
+                "latitude": {
+                  "description": "latitude where building is located",
+                  "example": 13.371337,
+                  "type": "number"
+                },
+                "longitude": {
+                  "description": "longitude where building is located",
+                  "example": 90.010000000000005,
+                  "type": "number"
+                },
+                "name": {
+                  "description": "full name of building",
+                  "example": "Levine Hall",
+                  "type": "string"
+                },
+                "path": {
+                  "description": "relative path to building detail",
+                  "example": "/building/LEVH",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "name": {
+      "description": "Course section's full title",
+      "example": "FORMAL LOGIC II",
+      "type": "string"
+    },
+    "path": {
+      "description": "relative path to course section",
+      "example": "/courses/2041/sections/401",
+      "type": "string"
+    },
+    "primary_alias": {
+      "description": "unique identifier for section",
+      "example": "PHIL-006-401",
+      "type": "string"
+    },
+    "sectionnum": {
+      "description": "number for section",
+      "example": "401",
+      "type": "string"
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/section#/definitions/id"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing section.",
+      "href": "/sections/{(%2Fschemata%2Fsection%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "$ref": "/schemata/section#"
+          },
+          "retrieved": {
+            "$ref": "/schemata/course#/definitions/retrieved"
+          },
+          "valid": {
+            "$ref": "/schemata/course#/definitions/valid"
+          },
+          "version": {
+            "$ref": "/schemata/course#/definitions/version"
+          }
+        }
+      }
+    },
+    {
+      "description": "List existing sections.",
+      "href": "/sections",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "properties": {
+              "values": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "/schemata/section#"
+                }
+              }
+            },
+            "type": "object"
+          },
+          "retrieved": {
+            "$ref": "/schemata/course#/definitions/retrieved"
+          },
+          "valid": {
+            "$ref": "/schemata/course#/definitions/valid"
+          },
+          "version": {
+            "$ref": "/schemata/course#/definitions/version"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "aliases": {
+      "$ref": "/schemata/section#/definitions/aliases"
+    },
+    "courses": {
+      "$ref": "/schemata/section#/definitions/courses"
+    },
+    "id": {
+      "$ref": "/schemata/section#/definitions/id"
+    },
+    "instructors": {
+      "$ref": "/schemata/section#/definitions/instructors"
+    },
+    "meetingtimes": {
+      "$ref": "/schemata/section#/definitions/meetingtimes"
+    },
+    "name": {
+      "$ref": "/schemata/section#/definitions/name"
+    },
+    "path": {
+      "$ref": "/schemata/section#/definitions/path"
+    },
+    "primary_alias": {
+      "$ref": "/schemata/section#/definitions/primary_alias"
+    },
+    "sectionnum": {
+      "$ref": "/schemata/section#/definitions/sectionnum"
+    }
+  },
+  "id": "schemata/section"
+}

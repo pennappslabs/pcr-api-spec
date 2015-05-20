@@ -107,39 +107,22 @@
       "type": "object",
       "properties": {
         "aliases": {
-          "description": "list of associated aliases for a section",
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "description": "a section alias' unique identifier",
-            "example": "MATH-570-401",
-            "type": "string"
-          }
+          "$ref": "/schemata/section#/definitions/aliases"
         },
         "id": {
-          "description": "unique identifier for section",
-          "example": "2041-401",
-          "type": "string"
+          "$ref": "/schemata/section#/definitions/id"
         },
         "name": {
-          "description": "Course section's full title",
-          "example": "FORMAL LOGIC II",
-          "type": "string"
+          "$ref": "/schemata/section#/definitions/name"
         },
         "path": {
-          "description": "relative path to course section",
-          "example": "/courses/2041/sections/401",
-          "type": "string"
+          "$ref": "/schemata/section#/definitions/path"
         },
         "primary_alias": {
-          "description": "unique identifier for section",
-          "example": "PHIL-006-401",
-          "type": "string"
+          "$ref": "/schemata/section#/definitions/primary_alias"
         },
         "sectionnum": {
-          "description": "number for section",
-          "example": "401",
-          "type": "string"
+          "$ref": "/schemata/section#/definitions/sectionnum"
         }
       }
     },

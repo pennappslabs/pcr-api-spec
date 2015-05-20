@@ -302,6 +302,192 @@ HTTP/1.1 200 OK
 ```
 
 
+## Sections
+
+Course section
+
+### Attributes
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **aliases** | *array* | list of associated aliases for a section | `["MATH-570-401"]` |
+| **courses:aliases** | *array* | list of associated aliases | `["PHIL-006"]` |
+| **courses:id** | *integer* | unique identifier of course | `2041` |
+| **courses:name** | *string* | full course title | `"FORMAL LOGIC II"` |
+| **courses:path** | *string* | relative path for a course | `"/courses/2041"` |
+| **courses:primary_alias** | *string* | unique identifier for course department and number | `"PHIL-006"` |
+| **courses:semester** | *string* | unique identifier for semester | `"2002A"` |
+| **id** | *string* | unique identifier for section | `"2041-401"` |
+| **instructors** | *array* | list of associated instructors | `[{"first_name"=>"JACK", "id"=>"1-JACK-TOPIOL", "last_name"=>"TOPIOL", "name"=>"JACK TOPIOL", "path"=>"/instructors/1-JACK-TOPIOL"}]` |
+| **meetingtimes** | *array* | list of section meeting times | `[{"day"=>"W", "start"=>"13:30", "end"=>"15:00", "type"=>"LEC", "room"=>{"id"=>"LEVH 101", "name"=>"Wu and Chen Auditorium", "number"=>"101", "building"=>{"id"=>"LEVH", "latitude"=>13.371337, "longitude"=>90.01, "name"=>"Levine Hall", "path"=>"/building/LEVH"}}}]` |
+| **name** | *string* | Course section's full title | `"FORMAL LOGIC II"` |
+| **path** | *string* | relative path to course section | `"/courses/2041/sections/401"` |
+| **primary_alias** | *string* | unique identifier for section | `"PHIL-006-401"` |
+| **sectionnum** | *string* | number for section | `"401"` |
+
+### Sections Info
+
+Info for existing section.
+
+```
+GET /sections/{section_id}
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n http://api.penncoursereview.com/v1/sections/$SECTION_ID
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "result": {
+    "aliases": [
+      "MATH-570-401"
+    ],
+    "courses": {
+      "aliases": [
+        "PHIL-006"
+      ],
+      "id": 2041,
+      "name": "FORMAL LOGIC II",
+      "path": "/courses/2041",
+      "primary_alias": "PHIL-006",
+      "semester": "2002A"
+    },
+    "id": "2041-401",
+    "instructors": [
+      {
+        "first_name": "JACK",
+        "id": "1-JACK-TOPIOL",
+        "last_name": "TOPIOL",
+        "name": "JACK TOPIOL",
+        "path": "/instructors/1-JACK-TOPIOL"
+      }
+    ],
+    "meetingtimes": [
+      {
+        "day": "W",
+        "start": "13:30",
+        "end": "15:00",
+        "type": "LEC",
+        "room": {
+          "id": "LEVH 101",
+          "name": "Wu and Chen Auditorium",
+          "number": "101",
+          "building": {
+            "id": "LEVH",
+            "latitude": 13.371337,
+            "longitude": 90.01,
+            "name": "Levine Hall",
+            "path": "/building/LEVH"
+          }
+        }
+      }
+    ],
+    "name": "FORMAL LOGIC II",
+    "path": "/courses/2041/sections/401",
+    "primary_alias": "PHIL-006-401",
+    "sectionnum": "401"
+  },
+  "retrieved": "2015-05-19 21:34:22.150788",
+  "valid": true,
+  "version": "0.3"
+}
+```
+
+### Sections List
+
+List existing sections.
+
+```
+GET /sections
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n http://api.penncoursereview.com/v1/sections
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "result": {
+    "values": [
+      {
+        "aliases": [
+          "MATH-570-401"
+        ],
+        "courses": {
+          "aliases": [
+            "PHIL-006"
+          ],
+          "id": 2041,
+          "name": "FORMAL LOGIC II",
+          "path": "/courses/2041",
+          "primary_alias": "PHIL-006",
+          "semester": "2002A"
+        },
+        "id": "2041-401",
+        "instructors": [
+          {
+            "first_name": "JACK",
+            "id": "1-JACK-TOPIOL",
+            "last_name": "TOPIOL",
+            "name": "JACK TOPIOL",
+            "path": "/instructors/1-JACK-TOPIOL"
+          }
+        ],
+        "meetingtimes": [
+          {
+            "day": "W",
+            "start": "13:30",
+            "end": "15:00",
+            "type": "LEC",
+            "room": {
+              "id": "LEVH 101",
+              "name": "Wu and Chen Auditorium",
+              "number": "101",
+              "building": {
+                "id": "LEVH",
+                "latitude": 13.371337,
+                "longitude": 90.01,
+                "name": "Levine Hall",
+                "path": "/building/LEVH"
+              }
+            }
+          }
+        ],
+        "name": "FORMAL LOGIC II",
+        "path": "/courses/2041/sections/401",
+        "primary_alias": "PHIL-006-401",
+        "sectionnum": "401"
+      }
+    ]
+  },
+  "retrieved": "2015-05-19 21:34:22.150788",
+  "valid": true,
+  "version": "0.3"
+}
+```
+
+
 ## Semesters
 
 Academic semester. Spring is A, Summer is B, Fall is C.
