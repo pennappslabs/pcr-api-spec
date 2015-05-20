@@ -3,6 +3,95 @@ Penn Course Review API
 
 This is the API used by the website and SDK clients.
 
+## Courses
+
+Course resource, e.g. 'CIS-120 in 2011c'. Note that a course may have multiple aliases through crosslistings.
+
+### Attributes
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **aliases** | *array* | list of associated aliases | `["PHIL-006"]` |
+| **coursehistories:path** | *string* | relative path for a course's history | `"/coursehistories/1428"` |
+| **credits** | *number* | number of academic credits associated with course | `1.0` |
+| **description** | *string* | course description | `"An introduction to first-order logic including the completeness, compactness, and Lowenheim-Skolem theorems, and Godel's incompleteness theorems."` |
+| **id** | *integer* | unique identifier of course | `2041` |
+| **name** | *string* | full course title | `"FORMAL LOGIC II"` |
+| **path** | *string* | relative path for a course | `"/courses/2041"` |
+| **primary_alias** | *string* | unique identifier for course department and number | `"PHIL-006"` |
+| **reviews:path** | *string* | relative path for a course's reviews | `"/courses/2041/reviews"` |
+| **sections:path** | *string* | relative path to course's sections | `"/courses/2041/sections"` |
+| **sections:values** | *array* | array of sections | `[{"aliases"=>["MATH-570-401"], "id"=>"2041-401", "name"=>"FORMAL LOGIC II", "path"=>"/courses/2041/sections/401", "primary_alias"=>"PHIL-006-401", "sectionnum"=>"401"}]` |
+| **semester** | *string* | unique identifier for semester | `"2002A"` |
+
+### Courses Info
+
+Info for existing course. You can access this through the course's id (ex: 2041) or using a hyphen separated combination of semester and course identity (ex: 2003A-PHIL-006).
+
+```
+GET /courses/{course_id_or_url}
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n http://api.penncoursereview.com/v1/courses/$COURSE_ID_OR_URL
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "result": {
+    "values": [
+      {
+        "aliases": [
+          "PHIL-006"
+        ],
+        "coursehistories": {
+          "path": "/coursehistories/1428"
+        },
+        "credits": 1.0,
+        "description": "An introduction to first-order logic including the completeness, compactness, and Lowenheim-Skolem theorems, and Godel's incompleteness theorems.",
+        "id": 2041,
+        "name": "FORMAL LOGIC II",
+        "path": "/courses/2041",
+        "primary_alias": "PHIL-006",
+        "reviews": {
+          "path": "/courses/2041/reviews"
+        },
+        "sections": {
+          "path": "/courses/2041/sections",
+          "values": [
+            {
+              "aliases": [
+                "MATH-570-401"
+              ],
+              "id": "2041-401",
+              "name": "FORMAL LOGIC II",
+              "path": "/courses/2041/sections/401",
+              "primary_alias": "PHIL-006-401",
+              "sectionnum": "401"
+            }
+          ]
+        },
+        "semester": "2002A"
+      }
+    ]
+  },
+  "retrieved": "2015-05-19 21:34:22.150788",
+  "valid": true,
+  "version": "0.3"
+}
+```
+
+
 ## Departments
 
 Academic department at Penn

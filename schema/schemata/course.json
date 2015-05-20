@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Courses",
+  "description": "Course resource, e.g. 'CIS-120 in 2011c'. Note that a course may have multiple aliases through crosslistings.",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of course",
+      "example": 2041,
+      "type": "integer"
+    },
+    "name": {
+      "description": "full course title",
+      "example": "FORMAL LOGIC II",
+      "type": "string"
+    },
+    "path": {
+      "description": "relative path for a course",
+      "example": "/courses/2041",
+      "type": "string"
+    },
+    "url": {
+      "description": "semester id and course primary alias",
+      "example": "2003A-PHIL-006",
+      "type": "string"
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/course#/definitions/id"
+        },
+        {
+          "$ref": "/schemata/course#/definitions/url"
+        }
+      ]
+    },
+    "aliases": {
+      "description": "list of associated aliases",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "/schemata/course#/definitions/primary_alias"
+      }
+    },
+    "coursehistories": {
+      "description": "associated history for a course",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "relative path for a course's history",
+          "example": "/coursehistories/1428",
+          "type": "string"
+        }
+      }
+    },
+    "credits": {
+      "description": "number of academic credits associated with course",
+      "example": 1.0,
+      "type": "number"
+    },
+    "description": {
+      "description": "course description",
+      "example": "An introduction to first-order logic including the completeness, compactness, and Lowenheim-Skolem theorems, and Godel's incompleteness theorems.",
+      "type": "string"
+    },
+    "primary_alias": {
+      "description": "unique identifier for course department and number",
+      "example": "PHIL-006",
+      "type": "string"
+    },
+    "reviews": {
+      "description": "associated reviews for a course",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "relative path for a course's reviews",
+          "example": "/courses/2041/reviews",
+          "type": "string"
+        }
+      }
+    },
+    "sections": {
+      "description": "course's offered sections",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "relative path to course's sections",
+          "example": "/courses/2041/sections",
+          "type": "string"
+        },
+        "values": {
+          "description": "array of sections",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "/schemata/course#/definitions/section"
+          }
+        }
+      }
+    },
+    "section": {
+      "description": "single section for a course",
+      "type": "object",
+      "properties": {
+        "aliases": {
+          "description": "list of associated aliases for a section",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "description": "a section alias' unique identifier",
+            "example": "MATH-570-401",
+            "type": "string"
+          }
+        },
+        "id": {
+          "description": "unique identifier for section",
+          "example": "2041-401",
+          "type": "string"
+        },
+        "name": {
+          "description": "Course section's full title",
+          "example": "FORMAL LOGIC II",
+          "type": "string"
+        },
+        "path": {
+          "description": "relative path to course section",
+          "example": "/courses/2041/sections/401",
+          "type": "string"
+        },
+        "primary_alias": {
+          "description": "unique identifier for section",
+          "example": "PHIL-006-401",
+          "type": "string"
+        },
+        "sectionnum": {
+          "description": "number for section",
+          "example": "401",
+          "type": "string"
+        }
+      }
+    },
+    "retrieved": {
+      "description": "ISO date and time of course retrieval from API",
+      "example": "2015-05-19 21:34:22.150788",
+      "type": "string"
+    },
+    "valid": {
+      "description": "boolean representing whether a given course is valid",
+      "example": true,
+      "type": "boolean"
+    },
+    "version": {
+      "description": "version of API used in response",
+      "example": "0.3",
+      "type": "string"
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing course. You can access this through the course's id (ex: 2041) or using a hyphen separated combination of semester and course identity (ex: 2003A-PHIL-006).",
+      "href": "/courses/{(%2Fschemata%2Fcourse%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info",
+      "targetSchema": {
+        "properties": {
+          "result": {
+            "properties": {
+              "values": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "/schemata/course#"
+                }
+              }
+            },
+            "type": "object"
+          },
+          "retrieved": {
+            "$ref": "/schemata/course#/definitions/retrieved"
+          },
+          "valid": {
+            "$ref": "/schemata/course#/definitions/valid"
+          },
+          "version": {
+            "$ref": "/schemata/course#/definitions/version"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "aliases": {
+      "$ref": "/schemata/course#/definitions/aliases"
+    },
+    "coursehistories": {
+      "$ref": "/schemata/course#/definitions/coursehistories"
+    },
+    "credits": {
+      "$ref": "/schemata/course#/definitions/credits"
+    },
+    "description": {
+      "$ref": "/schemata/course#/definitions/description"
+    },
+    "id": {
+      "$ref": "/schemata/course#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/course#/definitions/name"
+    },
+    "path": {
+      "$ref": "/schemata/course#/definitions/path"
+    },
+    "primary_alias": {
+      "$ref": "/schemata/course#/definitions/primary_alias"
+    },
+    "reviews": {
+      "$ref": "/schemata/course#/definitions/reviews"
+    },
+    "sections": {
+      "$ref": "/schemata/course#/definitions/sections"
+    },
+    "semester": {
+      "$ref": "/schemata/semester#/definitions/id"
+    }
+  },
+  "id": "schemata/course"
+}
